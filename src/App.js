@@ -22,6 +22,8 @@ import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
+import { Link } from 'react-scroll';
+
 import Name from './components/Name';
 import About from './components/About';
 import Experience from './components/Experience';
@@ -33,6 +35,9 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+  },
+  active: {
+    color: theme.palette.primary
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -47,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   menuButton: {
-    position: 'absolute',
+    position: 'fixed',
     left: theme.spacing(2),
     top: theme.spacing(2),
   },
@@ -78,31 +83,78 @@ function App() {
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>
-          <ListItemText>Home</ListItemText>
+          <ListItemText>
+            <Link
+              activeClass="active"
+              to="home"
+              spy={true}
+              smooth={true}
+              duration={500}
+              hashSpy={true}
+            >
+              Home
+            </Link>
+          </ListItemText>
         </ListItem>
         <ListItem button key={2}>
           <ListItemIcon>
             <InfoIcon />
           </ListItemIcon>
-          <ListItemText>About</ListItemText>
+          <ListItemText><Link
+              activeClass="active"
+              to="about"
+              spy={true}
+              smooth={true}
+              duration={500}
+              hashSpy={true}
+            >
+              About
+            </Link></ListItemText>
         </ListItem>
         <ListItem button key={3}>
           <ListItemIcon>
             <WorkIcon />
           </ListItemIcon>
-          <ListItemText>Work Experience</ListItemText>
+          <ListItemText><Link
+              activeClass="active"
+              to="experience"
+              spy={true}
+              smooth={true}
+              duration={500}
+              hashSpy={true}
+            >
+              Work Experience
+            </Link></ListItemText>
         </ListItem>
         <ListItem button key={4}>
           <ListItemIcon>
             <ComputerIcon />
           </ListItemIcon>
-          <ListItemText>Side Projects</ListItemText>
+          <ListItemText><Link
+              activeClass="active"
+              to="projects"
+              spy={true}
+              smooth={true}
+              duration={500}
+              hashSpy={true}
+            >
+              Side Projects
+            </Link></ListItemText>
         </ListItem>
         <ListItem button key={5}>
           <ListItemIcon>
             <MusicNoteIcon />
           </ListItemIcon>
-          <ListItemText>Hobbies</ListItemText>
+          <ListItemText><Link
+              activeClass="active"
+              to="hobbies"
+              spy={true}
+              smooth={true}
+              duration={500}
+              hashSpy={true}
+            >
+              Hobbies
+            </Link></ListItemText>
         </ListItem>
       </List>
     </div>
@@ -151,11 +203,21 @@ function App() {
       </nav>
 
       <Container>
-        <Name />
-        <About />
-        <Experience />
-        <Projects />
-        <Hobbies />
+        <section id="home">
+          <Name />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="experience">
+          <Experience />
+        </section>
+        <section id="projects">
+          <Projects />
+        </section>
+        <section id="hobbies">
+          <Hobbies />
+        </section>
       </Container>
     </div>
   );
